@@ -47,8 +47,8 @@ export const projects = [
     tech: ["React", "JWT", "Node.js"],
     // CineVault carousel images from /src/assets
     images: [cinevaultMain, netflixUi],
-    demo: "#",
-    github: "#",
+    demo: "https://cinevault-auth-kvt4.vercel.app/",
+    github: "https://github.com/codedbyPavi/cinevault-auth",
     cinematic: true,
   },
   {
@@ -58,8 +58,8 @@ export const projects = [
       "AI-first learning platform with clean UX, guided learning paths, and scalable data modeling.",
     tech: ["React", "Prisma", "MySQL"],
     image: krytilAi,
-    demo: "#",
-    github: "#",
+    demo: "https://devacademy-five.vercel.app/",
+    github: "https://github.com/codedbyPavi/Devacademy",
     aiGlow: true,
   },
 ];

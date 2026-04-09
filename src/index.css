@@ -115,7 +115,7 @@ body {
 }
 
 .action-btn {
-  @apply rounded-lg px-4 py-2 text-sm transition;
+  @apply rounded-lg px-4 py-2 text-sm transition duration-300;
   border: 1px solid var(--border-soft);
   color: var(--text-primary);
   background: #ffffff;
@@ -124,6 +124,8 @@ body {
 .action-btn:hover {
   background: rgba(249, 168, 212, 0.22);
   border-color: rgba(244, 114, 182, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 .timeline-dot {

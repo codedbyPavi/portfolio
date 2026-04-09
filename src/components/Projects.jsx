@@ -82,10 +82,10 @@ function Projects() {
                 ))}
               </div>
               <div className="mt-7 flex gap-3">
-                <a className="action-btn" href={featuredProject.demo} target="_blank" rel="noreferrer">
+                <a className="action-btn" href={featuredProject.demo} target="_blank" rel="noopener noreferrer">
                   View Project
                 </a>
-                <a className="action-btn" href={featuredProject.github} target="_blank" rel="noreferrer">
+                <a className="action-btn" href={featuredProject.github} target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>
               </div>
@@ -139,10 +139,10 @@ function Projects() {
                 ))}
               </div>
               <div className="mt-6 flex gap-3">
-                <a className="action-btn" href={cineProject.demo} target="_blank" rel="noreferrer">
+                <a className="action-btn" href={cineProject.demo} target="_blank" rel="noopener noreferrer">
                   View Project
                 </a>
-                <a className="action-btn" href={cineProject.github} target="_blank" rel="noreferrer">
+                <a className="action-btn" href={cineProject.github} target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>
               </div>
@@ -189,10 +189,10 @@ function Projects() {
                 ))}
               </div>
               <div className="mt-5 flex gap-3">
-                <a className="action-btn" href={project.demo} target="_blank" rel="noreferrer">
+                <a className="action-btn" href={project.demo} target="_blank" rel="noopener noreferrer">
                   View Project
                 </a>
-                <a className="action-btn" href={project.github} target="_blank" rel="noreferrer">
+                <a className="action-btn" href={project.github} target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>
               </div>

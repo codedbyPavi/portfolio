@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg-main: #fff7f5;
+  --card-bg: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --accent-pink: #f472b6;
+  --accent-rose: #fb7185;
+  --border-soft: rgba(0, 0, 0, 0.06);
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+body {
+  overflow-x: hidden;
+  background: radial-gradient(circle at 20% 0%, rgba(244, 114, 182, 0.09), transparent 38%), var(--bg-main);
+}
+
+.featured-mini {
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+}
+
+.section-wrap {
+  @apply mx-auto w-full max-w-6xl px-6 py-20 md:px-12 md:py-28;
+}
+
+.glass-card {
+  @apply rounded-2xl border border-black/5 bg-white shadow-lg shadow-black/5 backdrop-blur-xl;
+}
+
+.hero-slide-card {
+  animation: slideInHero 1.2s linear forwards;
+}
+
+.featured-project {
+  @apply rounded-3xl p-5 backdrop-blur-xl md:p-7;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(145deg, #ffffff, #fff4f9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.accent-text {
+  color: #f472b6;
+}
+
+.cta-btn {
+  @apply rounded-full px-7 py-3 font-medium transition hover:scale-[1.02] inline-flex items-center gap-2;
+  border: 1px solid rgba(244, 114, 182, 0.32);
+  background: linear-gradient(135deg, #f9a8d4, #f472b6);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(244, 114, 182, 0.24);
+}
+
+.cta-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.skill-bubble {
+  @apply rounded-full px-4 py-2 text-sm;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--text-primary);
+}
+
+.skill-item-card {
+  @apply flex items-center gap-3 rounded-xl px-4 py-3 text-sm transition duration-300;
+  border: 1px solid var(--border-soft);
+  background: #ffffff;
+  color: var(--text-primary);
+}
+
+.skill-item-card:hover {
+  transform: scale(1.05);
+  border-color: rgba(244, 114, 182, 0.32);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
+}
+
+.skill-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #f472b6;
+  opacity: 0.85;
+}
+
+.chip {
+  @apply rounded-full px-3 py-1 text-xs;
+  border: 1px solid rgba(244, 114, 182, 0.2);
+  background: rgba(244, 114, 182, 0.1);
+  color: #9d174d;
+}
+
+.action-btn {
+  @apply rounded-lg px-4 py-2 text-sm transition;
+  border: 1px solid var(--border-soft);
+  color: var(--text-primary);
+  background: #ffffff;
+}
+
+.action-btn:hover {
+  background: rgba(249, 168, 212, 0.22);
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
+.timeline-dot {
+  @apply absolute -left-[0.58rem] mt-4 h-4 w-4 rounded-full;
+  background: var(--accent-pink);
+  box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.2);
+}
+
+.badge-glow {
+  @apply rounded-full px-3 py-1 text-xs uppercase tracking-wider;
+  border: 1px solid rgba(244, 114, 182, 0.26);
+  background: rgba(249, 168, 212, 0.2);
+  color: #9d174d;
+}
+
+.input {
+  @apply w-full rounded-xl px-4 py-3 outline-none;
+  border: 1px solid var(--border-soft);
+  background: #ffffff;
+  color: var(--text-primary);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+}
+
+.input:focus {
+  border-color: rgba(244, 114, 182, 0.45);
+}
+
+.form-field {
+  position: relative;
+  display: block;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.input-with-icon {
+  padding-left: 2.3rem;
+}
+
+.input-error {
+  border-color: rgba(225, 29, 72, 0.5);
+}
+
+.form-error {
+  margin-top: -0.35rem;
+  font-size: 0.85rem;
+  color: #e11d48;
+}
+
+.form-success {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: #16a34a;
+}
+
+.contact-link {
+  @apply block rounded-lg px-4 py-3 transition;
+  border: 1px solid var(--border-soft);
+  color: var(--text-primary);
+}
+
+.contact-link:hover {
+  border-color: rgba(244, 114, 182, 0.3);
+  background: rgba(249, 168, 212, 0.16);
+}
+
+.icon-link {
+  @apply flex items-center gap-3 transition duration-300 hover:scale-[1.01];
+}
+
+.nav-link {
+  @apply rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em] transition;
+  color: var(--text-secondary);
+}
+
+.nav-link:hover {
+  color: #be185d;
+  background: rgba(249, 168, 212, 0.28);
+}
+
+.cinematic-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.ai-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes slideInHero {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+

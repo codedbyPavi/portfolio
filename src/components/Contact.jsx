@@ -11,6 +11,11 @@ function Contact() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [submitErrorMessage, setSubmitErrorMessage] = useState("");
+
+  const SERVICE_IDS = ["service_q1f2oe5", "service_e5v1brk"];
+  const TEMPLATE_ID = "template_htxszve";
+  const PUBLIC_KEY = "cMb4Z265sHlb3XrSU";
 
   const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
@@ -31,6 +36,7 @@ function Contact() {
     setErrors((prev) => ({ ...prev, [key]: undefined }));
     setSuccess(false);
     setSubmitError(false);
+    setSubmitErrorMessage("");
   };
 
   const handleSubmit = async (e) => {
@@ -42,23 +48,38 @@ function Contact() {
     setLoading(true);
     setSuccess(false);
     setSubmitError(false);
+    setSubmitErrorMessage("");
 
     try {
-      await emailjs.send(
-        "service_q1fzoe5",
-        "template_htxszve",
-        {
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        },
-        "cMb4Z265sHlb3XrSU"
-      );
+      let lastError = null;
+      for (const serviceId of SERVICE_IDS) {
+        try {
+          await emailjs.send(
+            serviceId,
+            TEMPLATE_ID,
+            {
+              name: form.name,
+              email: form.email,
+              message: form.message,
+            },
+            PUBLIC_KEY
+          );
+          lastError = null;
+          break;
+        } catch (error) {
+          lastError = error;
+        }
+      }
+
+      if (lastError) {
+        throw lastError;
+      }
 
       setSuccess(true);
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
       setSubmitError(true);
+      setSubmitErrorMessage(error?.text || "Something went wrong");
     }
 
     setLoading(false);
@@ -141,7 +162,7 @@ function Contact() {
             <span>{loading ? "Sending..." : "Send Message"}</span>
           </button>
           {success && <p className="form-success">Message sent successfully 🎉</p>}
-          {submitError && <p className="form-error">Something went wrong.</p>}
+          {submitError && <p className="form-error">{submitErrorMessage || "Something went wrong"}</p>}
         </motion.form>
       </div>
     </section>

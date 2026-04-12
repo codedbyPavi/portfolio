@@ -35,8 +35,8 @@ export const projects = [
     tech: ["Python", "OpenCV", "Raspberry Pi"],
     // Featured Smart Mirror images from /src/assets
     images: [smartMirrorOne, smartMirrorTwo],
-    demo: "#",
-    github: "#",
+    demo: "https://smart-mirror-delta.vercel.app/",
+    github: "https://github.com/codedbyPavi/Smart-mirror",
     featured: true,
   },
   {

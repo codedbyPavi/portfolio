@@ -8,7 +8,7 @@ export const profile = {
   name: "S Pavithra Devi",
   title: "Full Stack Developer | AI Enthusiast",
   email: "spavithradevi2025@gmail.com",
-  linkedin: "https://linkedin.com/in/pavithra-devi-3b938a369//",
+  linkedin: "https://linkedin.com/in/pavithra-devi-3b938a369/",
   github: "https://github.com/codedbyPavi/",
 };
 
@@ -29,11 +29,10 @@ export const skills = [
 export const projects = [
   {
     name: "AI Smart Mirror",
-    type: "Featured AI Project",
+    type: "Computer vision · Edge",
     description:
-      "AI-powered smart mirror with real-time skin analysis and virtual makeup try-on using gesture control.",
+      "Mirror interface for live skin analysis and virtual makeup try-on. Gesture-based control on Raspberry Pi with OpenCV.",
     tech: ["Python", "OpenCV", "Raspberry Pi"],
-    // Featured Smart Mirror images from /src/assets
     images: [smartMirrorOne, smartMirrorTwo],
     demo: "https://smart-mirror-delta.vercel.app/",
     github: "https://github.com/codedbyPavi/Smart-mirror",
@@ -41,11 +40,9 @@ export const projects = [
   },
   {
     name: "CineVault",
-    type: "Movie Platform",
-    description:
-      "Cinematic streaming platform with JWT auth, protected routes, and immersive Netflix-style UI.",
+    type: "Full-stack app",
+    description: "Streaming-style catalog with sign-in, JWT auth, protected routes, and a focused movie UI.",
     tech: ["React", "JWT", "Node.js"],
-    // CineVault carousel images from /src/assets
     images: [cinevaultMain, netflixUi],
     demo: "https://cinevault-auth-kvt4.vercel.app/",
     github: "https://github.com/codedbyPavi/cinevault-auth",
@@ -53,9 +50,8 @@ export const projects = [
   },
   {
     name: "Krytil AI Academy",
-    type: "AI LMS Platform",
-    description:
-      "AI-first learning platform with clean UX, guided learning paths, and scalable data modeling.",
+    type: "LMS",
+    description: "Learning paths and course UI on top of a relational model with Prisma and MySQL.",
     tech: ["React", "Prisma", "MySQL"],
     image: krytilAi,
     demo: "https://devacademy-five.vercel.app/",

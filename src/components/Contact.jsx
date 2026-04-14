@@ -86,33 +86,43 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="section-wrap pb-20">
-      <SectionTitle eyebrow="Contact" title="Let&apos;s build something exceptional together" />
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="glass-card p-6">
-          <p className="mb-4 text-[#9CA3AF]">Reach me through these platforms:</p>
-          <div className="space-y-3">
-            <a className="contact-link icon-link" href={`mailto:${profile.email}`}>
-              <Mail size={18} />
-              <span>{profile.email}</span>
+    <section id="contact" className="section-wrap pb-24 md:pb-32">
+      <SectionTitle title="Contact" subtitle="Roles, collaborations, or questions — send a message." />
+
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.68 }}
+          className="glass-card relative overflow-hidden p-7 md:p-8"
+        >
+          <div className="pointer-events-none absolute left-1/2 top-0 h-32 w-32 -translate-x-1/2 rounded-full bg-neon-cyan/12 blur-3xl" />
+          <p className="font-accent text-xs font-semibold uppercase tracking-[0.25em] text-inkMuted">Links</p>
+          <p className="mt-2 text-sm text-inkMuted">Email, LinkedIn, and GitHub.</p>
+          <div className="mt-8 space-y-3">
+            <a className="contact-link icon-link group" href={`mailto:${profile.email}`}>
+              <Mail size={18} className="text-neon-pink transition group-hover:scale-110" />
+              <span className="break-all">{profile.email}</span>
             </a>
-            <a className="contact-link icon-link" href={profile.linkedin} target="_blank" rel="noreferrer">
-              <Link size={18} />
+            <a className="contact-link icon-link group" href={profile.linkedin} target="_blank" rel="noreferrer">
+              <Link size={18} className="text-neon-cyan transition group-hover:scale-110" />
               <span>LinkedIn</span>
             </a>
-            <a className="contact-link icon-link" href={profile.github} target="_blank" rel="noreferrer">
-              <Code2 size={18} />
+            <a className="contact-link icon-link group" href={profile.github} target="_blank" rel="noreferrer">
+              <Code2 size={18} className="text-neon-magenta transition group-hover:scale-110" />
               <span>GitHub</span>
             </a>
           </div>
-        </div>
+        </motion.div>
+
         <motion.form
           onSubmit={handleSubmit}
-          className="glass-card space-y-4 p-6"
-          initial={{ opacity: 0, y: 40 }}
+          className="glass-card relative space-y-4 p-7 md:p-8"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.68, delay: 0.05 }}
         >
           <label className="form-field">
             <span className="input-icon">
@@ -159,7 +169,7 @@ function Contact() {
 
           <button type="submit" className="cta-btn w-full justify-center" disabled={loading}>
             {loading ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}
-            <span>{loading ? "Sending..." : "Send Message"}</span>
+            <span>{loading ? "Sending..." : "Send message"}</span>
           </button>
           {success && <p className="form-success">Message sent successfully 🎉</p>}
           {submitError && <p className="form-error">{submitErrorMessage || "Something went wrong"}</p>}

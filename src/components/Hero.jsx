@@ -1,72 +1,145 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { profile, projects } from "../data/portfolioData";
+import { Sparkles, Star } from "lucide-react";
 
-const words = ["Creative Coder", "Aspiring Software Engineer", "Problem Solver"];
+const roles = ["FULL STACK DEVELOPER", "REACT DEVELOPER", "AI ENTHUSIAST", "PROBLEM SOLVER"];
+
+function useTypewriter(words) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = words[wordIndex];
+
+    if (!deleting && text === current) {
+      const id = setTimeout(() => setDeleting(true), 1300);
+      return () => clearTimeout(id);
+    }
+
+    if (deleting && text === "") {
+      setDeleting(false);
+      setWordIndex((v) => (v + 1) % words.length);
+      return undefined;
+    }
+
+    const timeout = deleting ? 45 : 85;
+    const id = setTimeout(() => {
+      const next = deleting ? current.slice(0, text.length - 1) : current.slice(0, text.length + 1);
+      setText(next);
+    }, timeout);
+
+    return () => clearTimeout(id);
+  }, [deleting, text, wordIndex, words]);
+
+  return text;
+}
+
+const floaters = [
+  { Icon: Star, className: "left-[8%] top-[24%] text-amber-200/45", delay: 0 },
+  { Icon: Sparkles, className: "right-[8%] top-[28%] text-neon-cyan/40", delay: 0.35 },
+  { Icon: Star, className: "left-1/2 top-[14%] -translate-x-1/2 text-neon-pink/35", delay: 0.7 },
+];
 
 function Hero() {
-  const [typed, setTyped] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [letterIndex, setLetterIndex] = useState(0);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const featured = useMemo(() => projects.find((project) => project.featured), []);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const typed = useTypewriter(useMemo(() => roles, []));
 
   useEffect(() => {
-    const target = words[wordIndex];
-    const timer = setTimeout(() => {
-      if (letterIndex <= target.length) {
-        setTyped(target.slice(0, letterIndex));
-        setLetterIndex((v) => v + 1);
-      } else {
-        setTimeout(() => {
-          setLetterIndex(0);
-          setWordIndex((v) => (v + 1) % words.length);
-        }, 1400);
-      }
-    }, 90);
-    return () => clearTimeout(timer);
-  }, [letterIndex, wordIndex]);
-
-  useEffect(() => {
-    const onMouseMove = (event) => {
-      const x = (event.clientX / window.innerWidth - 0.5) * 24;
-      const y = (event.clientY / window.innerHeight - 0.5) * 24;
-      setMouse({ x, y });
+    const onMove = (event) => {
+      const x = (event.clientX / window.innerWidth - 0.5) * 8;
+      const y = (event.clientY / window.innerHeight - 0.5) * -6;
+      setTilt({ x, y });
     };
-    window.addEventListener("mousemove", onMouseMove);
-    return () => window.removeEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center px-6 pt-24 md:px-12">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="grid items-center gap-8 lg:grid-cols-[1fr_420px]">
-          <div className="hero-slide-card glass-card max-w-3xl p-8 md:p-12">
-            <p className="mb-2 text-sm uppercase tracking-[0.25em] text-pink-500/80">Hello Universe</p>
-            <h1 className="text-5xl font-semibold leading-tight md:text-7xl">
-              Hi, I&apos;m <span className="accent-text">Pavithra</span>
-            </h1>
-            <p className="mt-4 text-lg text-[#6B7280] md:text-2xl">
-              I build intelligent &amp; beautiful digital experiences
-            </p>
-            <p className="mt-2 text-rose-500">
-              {typed}
-              <span className="ml-1 animate-pulse">|</span>
-            </p>
-            <a href="#projects" className="cta-btn mt-8 inline-flex">
-              Explore My Work
-            </a>
-          </div>
-          <motion.div
-            className="featured-mini glass-card hidden p-4 lg:block"
-            animate={{ x: mouse.x, y: mouse.y }}
-            transition={{ type: "spring", stiffness: 30, damping: 16 }}
+    <section
+      id="home"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-mesh-hero pb-20 pt-28 md:pb-28 md:pt-32"
+      style={{ backgroundColor: "#fdf8f5" }}
+    >
+      <div className="wave-container">
+        <div className="wave wave1"></div>
+        <div className="wave wave2"></div>
+        <div className="wave wave3"></div>
+        <div className="wave wave4"></div>
+        <div className="wave wave5"></div>
+      </div>
+
+      {floaters.map(({ Icon, className, delay }, i) => (
+        <motion.div
+          key={i}
+          className={`pointer-events-none absolute ${className}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, -5, 0] }}
+          transition={{
+            opacity: { delay: 0.15 + delay, duration: 0.7 },
+            y: { duration: 5 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay },
+          }}
+        >
+          <Icon className="h-4 w-4 md:h-5 md:w-5" strokeWidth={1.2} />
+        </motion.div>
+      ))}
+
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-neon-pink/10 blur-[100px]" />
+      <div className="pointer-events-none absolute left-1/2 bottom-1/4 h-64 w-64 -translate-x-1/2 rounded-full bg-neon-cyan/10 blur-[90px]" />
+
+      <div className="relative z-[1] mx-auto w-full max-w-7xl px-6 md:px-10" style={{ perspective: "1200px" }}>
+        <motion.div
+          className="mx-auto max-w-3xl text-center"
+          style={{ transformStyle: "preserve-3d" }}
+          animate={{ rotateX: tilt.y * 0.2, rotateY: tilt.x * 0.2 }}
+          transition={{ type: "spring", stiffness: 55, damping: 20 }}
+        >
+          <motion.p
+            className="font-accent text-lg font-bold uppercase tracking-[0.14em] text-neon-pink md:text-xl"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08, duration: 0.65 }}
           >
-            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-pink-500/75">Spotlight</p>
-            <p className="text-xl font-semibold">{featured?.name}</p>
-            <p className="mt-1 text-sm text-[#6B7280]">{profile.title}</p>
+            Hello
+          </motion.p>
+
+          <motion.h1
+            className="hero-slide-card font-display mt-3 text-[clamp(2.5rem,7vw,4.75rem)] font-extrabold leading-[0.95] tracking-tight text-ink"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.12, duration: 0.75 }}
+          >
+            <span className="block shimmer-name">Pavithra Devi</span>
+            <span className="font-script mt-2 block text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-none text-neon-magenta">
+              Portfolio
+            </span>
+          </motion.h1>
+
+          <motion.p
+            className="font-accent mx-auto mt-8 max-w-xl text-sm font-semibold uppercase leading-relaxed tracking-[0.18em] text-inkMuted md:text-base md:tracking-[0.24em]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.28, duration: 0.65 }}
+          >
+            {typed}
+            <span className="ml-1 inline-block animate-pulse align-middle text-neon-pink">|</span>
+          </motion.p>
+
+          <motion.div
+            className="mt-11 flex flex-wrap items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.65 }}
+          >
+            <a href="#projects" className="cta-btn">
+              <Sparkles className="h-4 w-4 text-neon-pink" />
+              View work
+            </a>
+            <a href="#about" className="cta-btn-ghost">
+              About
+            </a>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

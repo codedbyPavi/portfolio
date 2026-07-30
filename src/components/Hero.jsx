@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Star } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
-const roles = ["FULL STACK DEVELOPER", "REACT DEVELOPER", "AI ENTHUSIAST", "PROBLEM SOLVER"];
+const roles = ["DATA & BUSINESS ANALYST", "AI-AUGMENTED DEVELOPER", "PROMPT ENGINEER", "PROBLEM SOLVER"];
 
 function useTypewriter(words) {
   const [wordIndex, setWordIndex] = useState(0);
@@ -36,9 +36,12 @@ function useTypewriter(words) {
 }
 
 const floaters = [
-  { Icon: Star, className: "left-[8%] top-[24%] text-amber-200/45", delay: 0 },
-  { Icon: Sparkles, className: "right-[8%] top-[28%] text-neon-cyan/40", delay: 0.35 },
-  { Icon: Star, className: "left-1/2 top-[14%] -translate-x-1/2 text-neon-pink/35", delay: 0.7 },
+  { className: "left-[8%] top-[24%] h-16 w-16 bg-accent/10 blur-2xl md:h-20 md:w-20", delay: 0 },
+  { className: "right-[8%] top-[28%] h-20 w-20 bg-accent/10 blur-2xl md:h-24 md:w-24", delay: 0.35 },
+  {
+    className: "left-1/2 top-[14%] h-14 w-14 -translate-x-1/2 bg-accent/10 blur-2xl md:h-16 md:w-16",
+    delay: 0.7,
+  },
 ];
 
 function Hero() {
@@ -69,23 +72,22 @@ function Hero() {
         <div className="wave wave5"></div>
       </div>
 
-      {floaters.map(({ Icon, className, delay }, i) => (
+      {floaters.map(({ className, delay }, i) => (
         <motion.div
           key={i}
-          className={`pointer-events-none absolute ${className}`}
+          className={`pointer-events-none absolute rounded-full ${className}`}
+          aria-hidden="true"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, -5, 0] }}
           transition={{
             opacity: { delay: 0.15 + delay, duration: 0.7 },
             y: { duration: 5 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay },
           }}
-        >
-          <Icon className="h-4 w-4 md:h-5 md:w-5" strokeWidth={1.2} />
-        </motion.div>
+        />
       ))}
 
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-neon-pink/10 blur-[100px]" />
-      <div className="pointer-events-none absolute left-1/2 bottom-1/4 h-64 w-64 -translate-x-1/2 rounded-full bg-neon-cyan/10 blur-[90px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/10 blur-[100px]" />
+      <div className="pointer-events-none absolute left-1/2 bottom-1/4 h-64 w-64 -translate-x-1/2 rounded-full bg-accent/5 blur-[90px]" />
 
       <div className="relative z-[1] mx-auto w-full max-w-7xl px-6 md:px-10" style={{ perspective: "1200px" }}>
         <motion.div
@@ -95,7 +97,7 @@ function Hero() {
           transition={{ type: "spring", stiffness: 55, damping: 20 }}
         >
           <motion.p
-            className="font-accent text-lg font-bold uppercase tracking-[0.14em] text-neon-pink md:text-xl"
+            className="font-accent text-lg font-bold uppercase tracking-[0.14em] text-accent md:text-xl"
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08, duration: 0.65 }}
@@ -110,7 +112,7 @@ function Hero() {
             transition={{ delay: 0.12, duration: 0.75 }}
           >
             <span className="block shimmer-name">Pavithra Devi</span>
-            <span className="font-script mt-2 block text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-none text-neon-magenta">
+            <span className="font-script mt-2 block text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-none text-accent">
               Portfolio
             </span>
           </motion.h1>
@@ -122,7 +124,7 @@ function Hero() {
             transition={{ delay: 0.28, duration: 0.65 }}
           >
             {typed}
-            <span className="ml-1 inline-block animate-pulse align-middle text-neon-pink">|</span>
+            <span className="ml-1 inline-block animate-pulse align-middle text-accent">|</span>
           </motion.p>
 
           <motion.div
@@ -132,7 +134,7 @@ function Hero() {
             transition={{ delay: 0.4, duration: 0.65 }}
           >
             <a href="#projects" className="cta-btn">
-              <Sparkles className="h-4 w-4 text-neon-pink" />
+              <Sparkles className="h-4 w-4 text-accent" />
               View work
             </a>
             <a href="#about" className="cta-btn-ghost">

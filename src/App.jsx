@@ -9,6 +9,7 @@ const Skills = lazy(() => import("./components/Skills"));
 const Projects = lazy(() => import("./components/Projects"));
 const Experience = lazy(() => import("./components/Experience"));
 const Achievements = lazy(() => import("./components/Achievements"));
+const Captures = lazy(() => import("./components/Captures"));
 const Contact = lazy(() => import("./components/Contact"));
 
 function App() {
@@ -46,6 +47,8 @@ function App() {
             <Experience />
             <div className="section-divider" />
             <Achievements />
+            <div className="section-divider" />
+            <Captures />
             <div className="section-divider" />
             <Contact />
           </Suspense>

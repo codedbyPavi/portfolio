@@ -34,7 +34,7 @@ function FeaturedLaptop({ featuredProject, slides, slide, setSlide }) {
         transition={{ type: "spring", stiffness: 80, damping: 18 }}
         style={{ transformStyle: "preserve-3d" }}
       >
-        <div className="rounded-[0.95rem] bg-gradient-to-br from-white/50 via-blush/35 to-neon-cyan/15 p-1 md:p-1.5">
+        <div className="rounded-[0.95rem] bg-gradient-to-br from-white/50 via-cream/35 to-accent/15 p-1 md:p-1.5">
           <div className="laptop-lid shadow-laptop overflow-hidden rounded-t-lg">
             <div className="laptop-screen-inner relative aspect-[16/10] bg-[#0c0a10]">
               <img
@@ -66,7 +66,7 @@ function FeaturedLaptop({ featuredProject, slides, slide, setSlide }) {
               aria-label={`Show image ${i + 1}`}
               onClick={() => setSlide(i)}
               className={`h-2.5 rounded-full transition-all ${
-                i === slide ? "w-8 bg-gradient-to-r from-neon-pink to-neon-cyan shadow-glowSoft" : "w-2.5 bg-black/12 hover:bg-black/22"
+                i === slide ? "w-8 bg-accent shadow-glowSoft" : "w-2.5 bg-black/12 hover:bg-black/22"
               }`}
             />
           ))}
@@ -113,7 +113,7 @@ function BrowserWindowCard({ project, index }) {
           background: `radial-gradient(240px circle at ${tilt.gx}% ${tilt.gy}%, rgba(255,255,255,0.45), transparent 55%)`,
         }}
       />
-      <div className="flex items-center gap-2 border-b border-black/5 bg-gradient-to-r from-blush/45 to-white px-3 py-2.5">
+      <div className="flex items-center gap-2 border-b border-black/5 bg-gradient-to-r from-accent/10 to-white px-3 py-2.5">
         <span className="flex gap-1">
           <span className="h-2 w-2 rounded-full bg-[#ff5f57]/90" />
           <span className="h-2 w-2 rounded-full bg-[#febc2e]/90" />
@@ -180,7 +180,7 @@ function Projects() {
 
   return (
     <section id="projects" className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-blush/35 via-cream to-sand/40" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-accent/5 via-cream to-sand/40" />
 
       <div className="section-wrap">
         <SectionTitle

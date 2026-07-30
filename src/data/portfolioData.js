@@ -67,5 +67,5 @@ export const experiences = [
 
 export const achievements = [
   "Hackathon Top 10 Finalist",
-  "International Silver Medalist (Taekwondo)",
+  "National Silver Medalist (Taekwondo)",
 ];

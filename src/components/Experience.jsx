@@ -6,7 +6,7 @@ import { experiences } from "../data/portfolioData";
 function Experience() {
   return (
     <section id="experience" className="relative overflow-hidden">
-      <div className="pointer-events-none absolute left-1/2 bottom-0 h-96 w-96 -translate-x-1/2 rounded-full bg-neon-pink/8 blur-[110px]" />
+      <div className="pointer-events-none absolute left-1/2 bottom-0 h-96 w-96 -translate-x-1/2 rounded-full bg-accent/8 blur-[110px]" />
       <div className="section-wrap">
         <SectionTitle title="Experience" subtitle="Internships in full-stack and frontend engineering." />
 
@@ -14,7 +14,8 @@ function Experience() {
           <div
             className="absolute bottom-6 left-[15px] top-6 w-px md:left-[19px]"
             style={{
-              background: "linear-gradient(180deg, rgba(255,62,207,0.55), rgba(94,234,212,0.5), rgba(255,62,207,0.35))",
+              background:
+                "linear-gradient(180deg, color-mix(in srgb, var(--accent-color) 55%, transparent), color-mix(in srgb, var(--accent-color) 35%, transparent))",
             }}
             aria-hidden
           />
@@ -28,7 +29,7 @@ function Experience() {
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ type: "spring", stiffness: 280, damping: 16, delay: idx * 0.1 }}
-                    className="relative z-[1] mt-1.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-gradient-to-br from-neon-pink to-neon-cyan shadow-[0_0_18px_rgba(255,62,207,0.35)]"
+                    className="relative z-[1] mt-1.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-accent shadow-glowSoft"
                   />
                 </div>
 
@@ -41,11 +42,14 @@ function Experience() {
                 >
                   <motion.div
                     className="glass-card rounded-2xl p-6 text-left md:p-7"
-                    whileHover={{ y: -3, boxShadow: "0 0 28px rgba(167,139,250,0.18)" }}
+                    whileHover={{
+                      y: -3,
+                      boxShadow: "0 0 28px color-mix(in srgb, var(--accent-color) 18%, transparent)",
+                    }}
                     transition={{ type: "spring", stiffness: 260, damping: 22 }}
                   >
                     <div className="flex flex-wrap items-center gap-3">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-neon-pink/20 to-neon-cyan/15 text-neon-pink">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/15 text-accent">
                         <Briefcase size={18} />
                       </span>
                     </div>

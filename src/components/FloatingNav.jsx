@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const links = ["home", "about", "skills", "projects", "experience", "achievements", "contact"];
+const links = ["home", "about", "skills", "projects", "experience", "achievements", "captures", "contact"];
 
 function FloatingNav() {
   return (

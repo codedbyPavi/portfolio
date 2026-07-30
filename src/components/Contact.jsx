@@ -97,20 +97,20 @@ function Contact() {
           transition={{ duration: 0.68 }}
           className="glass-card relative overflow-hidden p-7 md:p-8"
         >
-          <div className="pointer-events-none absolute left-1/2 top-0 h-32 w-32 -translate-x-1/2 rounded-full bg-neon-cyan/12 blur-3xl" />
+          <div className="pointer-events-none absolute left-1/2 top-0 h-32 w-32 -translate-x-1/2 rounded-full bg-accent/10 blur-3xl" />
           <p className="font-accent text-xs font-semibold uppercase tracking-[0.25em] text-inkMuted">Links</p>
           <p className="mt-2 text-sm text-inkMuted">Email, LinkedIn, and GitHub.</p>
           <div className="mt-8 space-y-3">
             <a className="contact-link icon-link group" href={`mailto:${profile.email}`}>
-              <Mail size={18} className="text-neon-pink transition group-hover:scale-110" />
+              <Mail size={18} className="text-accent transition group-hover:scale-110" />
               <span className="break-all">{profile.email}</span>
             </a>
             <a className="contact-link icon-link group" href={profile.linkedin} target="_blank" rel="noreferrer">
-              <Link size={18} className="text-neon-cyan transition group-hover:scale-110" />
+              <Link size={18} className="text-accent transition group-hover:scale-110" />
               <span>LinkedIn</span>
             </a>
             <a className="contact-link icon-link group" href={profile.github} target="_blank" rel="noreferrer">
-              <Code2 size={18} className="text-neon-magenta transition group-hover:scale-110" />
+              <Code2 size={18} className="text-accent transition group-hover:scale-110" />
               <span>GitHub</span>
             </a>
           </div>

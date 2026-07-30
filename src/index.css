@@ -8,8 +8,7 @@
   --card-bg: rgba(255, 255, 255, 0.72);
   --text-primary: #1a1523;
   --text-secondary: #5c5569;
-  --accent-pink: #ff3ecf;
-  --accent-neon-cyan: #5eead4;
+  --accent-color: theme("colors.accent");
   --border-soft: rgba(26, 21, 35, 0.08);
 }
 
@@ -26,8 +25,8 @@ body,
 body {
   overflow-x: hidden;
   background-color: #fdf8f5;
-  background-image: radial-gradient(circle at 12% 0%, rgba(255, 62, 207, 0.08), transparent 40%),
-    radial-gradient(circle at 88% 15%, rgba(94, 234, 212, 0.07), transparent 35%), var(--bg-main);
+  background-image: radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--accent-color) 8%, transparent), transparent 40%),
+    radial-gradient(circle at 88% 15%, color-mix(in srgb, var(--accent-color) 6%, transparent), transparent 35%), var(--bg-main);
 }
 
 #home {
@@ -66,14 +65,14 @@ body {
 }
 
 .wave1 {
-  background: radial-gradient(ellipse, #ff2d78 0%, transparent 70%);
+  background: radial-gradient(ellipse, var(--accent-color) 0%, transparent 70%);
   animation-duration: 18s;
   transform-origin: 55% 48%;
   opacity: 0.06;
 }
 
 .wave2 {
-  background: radial-gradient(ellipse, #c084fc 0%, transparent 70%);
+  background: radial-gradient(ellipse, var(--accent-color) 0%, transparent 70%);
   animation-duration: 24s;
   animation-direction: reverse;
   transform-origin: 45% 52%;
@@ -81,14 +80,14 @@ body {
 }
 
 .wave3 {
-  background: radial-gradient(ellipse, #ffb3d1 0%, transparent 60%);
+  background: radial-gradient(ellipse, var(--accent-color) 0%, transparent 60%);
   animation-duration: 30s;
   transform-origin: 52% 45%;
   opacity: 0.07;
 }
 
 .wave4 {
-  background: radial-gradient(ellipse, #e879f9 0%, transparent 65%);
+  background: radial-gradient(ellipse, var(--accent-color) 0%, transparent 65%);
   animation-duration: 20s;
   animation-direction: reverse;
   transform-origin: 48% 55%;
@@ -96,7 +95,7 @@ body {
 }
 
 .wave5 {
-  background: radial-gradient(ellipse, #fda4af 0%, transparent 70%);
+  background: radial-gradient(ellipse, var(--accent-color) 0%, transparent 70%);
   animation-duration: 35s;
   transform-origin: 50% 50%;
   opacity: 0.05;
@@ -114,7 +113,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: calc(100% - 3rem);
-  background: linear-gradient(90deg, transparent, rgba(255, 62, 207, 0.22), rgba(94, 234, 212, 0.18), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-color) 22%, transparent), transparent);
 }
 
 @media (min-width: 768px) {
@@ -174,7 +173,7 @@ body {
   position: absolute;
   inset: -2px;
   border-radius: inherit;
-  background: linear-gradient(125deg, rgba(255, 62, 207, 0.45), rgba(167, 139, 250, 0.35), rgba(94, 234, 212, 0.4));
+  background: color-mix(in srgb, var(--accent-color) 45%, transparent);
   z-index: -1;
   filter: blur(14px);
   opacity: 0.65;
@@ -195,7 +194,7 @@ body {
 }
 
 .accent-text {
-  background: linear-gradient(120deg, #ff3ecf, #a78bfa, #5eead4);
+  background: var(--accent-color);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -203,7 +202,7 @@ body {
 
 .shimmer-name {
   position: relative;
-  background-image: linear-gradient(110deg, #16121f 0%, #16121f 38%, #ffffff 49%, #ffd9eb 52%, #16121f 64%, #16121f 100%);
+  background-image: linear-gradient(110deg, #16121f 0%, #16121f 38%, #ffffff 49%, #f5e6d3 52%, #16121f 64%, #16121f 100%);
   background-size: 230% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -213,15 +212,15 @@ body {
 
 .cta-btn {
   @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide transition duration-300;
-  border: 1px solid rgba(255, 62, 207, 0.4);
-  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 45%, #fdf2f8 100%);
-  color: #831843;
-  box-shadow: 0 0 28px rgba(255, 62, 207, 0.28), 0 10px 28px rgba(26, 21, 35, 0.08);
+  border: 1px solid color-mix(in srgb, var(--accent-color) 40%, transparent);
+  background: color-mix(in srgb, var(--accent-color) 14%, var(--bg-main));
+  color: var(--accent-color);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--accent-color) 28%, transparent), 0 10px 28px rgba(26, 21, 35, 0.08);
 }
 
 .cta-btn:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 40px rgba(255, 62, 207, 0.38), 0 16px 36px rgba(94, 234, 212, 0.15);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--accent-color) 38%, transparent), 0 16px 36px rgba(26, 21, 35, 0.1);
 }
 
 .cta-btn:disabled {
@@ -239,17 +238,17 @@ body {
 
 .cta-btn-ghost:hover {
   color: var(--text-primary);
-  border-color: rgba(94, 234, 212, 0.45);
+  border-color: color-mix(in srgb, var(--accent-color) 45%, transparent);
   transform: translateY(-3px);
-  box-shadow: 0 0 32px rgba(94, 234, 212, 0.2), 0 12px 28px rgba(26, 21, 35, 0.08);
+  box-shadow: 0 0 32px color-mix(in srgb, var(--accent-color) 20%, transparent), 0 12px 28px rgba(26, 21, 35, 0.08);
 }
 
 .chip {
   @apply rounded-full px-3 py-1 text-xs font-medium;
   font-family: "Space Grotesk", system-ui, sans-serif;
-  border: 1px solid rgba(255, 62, 207, 0.2);
-  background: rgba(252, 231, 243, 0.85);
-  color: #831843;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent);
+  background: color-mix(in srgb, var(--accent-color) 10%, var(--bg-main));
+  color: var(--accent-color);
 }
 
 .action-btn {
@@ -260,19 +259,19 @@ body {
 }
 
 .action-btn:hover {
-  border-color: rgba(255, 62, 207, 0.35);
-  background: rgba(252, 231, 243, 0.95);
+  border-color: color-mix(in srgb, var(--accent-color) 35%, transparent);
+  background: color-mix(in srgb, var(--accent-color) 10%, var(--bg-main));
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(94, 234, 212, 0.2);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 20%, transparent);
 }
 
 .badge-glow {
   @apply inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider;
   font-family: "Space Grotesk", system-ui, sans-serif;
-  border: 1px solid rgba(255, 62, 207, 0.3);
-  background: linear-gradient(135deg, rgba(252, 231, 243, 0.95), rgba(255, 255, 255, 0.9));
-  color: #9d174d;
-  box-shadow: 0 0 20px rgba(255, 62, 207, 0.15);
+  border: 1px solid color-mix(in srgb, var(--accent-color) 30%, transparent);
+  background: color-mix(in srgb, var(--accent-color) 9%, white);
+  color: var(--accent-color);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 15%, transparent);
 }
 
 .achievement-card::after {
@@ -297,7 +296,7 @@ body {
 
 .keyboard-pad-wrap {
   perspective: 600px;
-  filter: drop-shadow(0 20px 40px rgba(255, 45, 120, 0.15));
+  filter: drop-shadow(0 20px 40px color-mix(in srgb, var(--accent-color) 15%, transparent));
 }
 
 .keyboard-pad {
@@ -334,6 +333,18 @@ body {
   background: #1c1410;
 }
 
+.keyboard-pad.pad-data {
+  background: #102419;
+}
+
+.keyboard-pad.pad-creative {
+  background: #241127;
+}
+
+.keyboard-pad.pad-built {
+  background: #111827;
+}
+
 .keyboard-pad.grid-2 {
   grid-template-columns: repeat(2, minmax(0, 64px));
   justify-content: center;
@@ -346,6 +357,11 @@ body {
 
 .keyboard-pad.row-5 {
   grid-template-columns: repeat(5, minmax(0, 64px));
+  justify-content: center;
+}
+
+.keyboard-pad.grid-built {
+  grid-template-columns: repeat(6, minmax(0, 64px));
   justify-content: center;
 }
 
@@ -456,8 +472,19 @@ body {
   font-size: 1.1rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #ff2d78;
-  text-shadow: 0 0 20px rgba(255, 45, 120, 0.4);
+  color: var(--accent-color);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 40%, transparent);
+}
+
+.skill-category-subtitle {
+  margin: -0.25rem auto 0;
+  max-width: 34rem;
+  color: var(--text-secondary);
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -466,6 +493,10 @@ body {
   }
 
   .keyboard-pad.row-5 {
+    grid-template-columns: repeat(3, minmax(0, 64px));
+  }
+
+  .keyboard-pad.grid-built {
     grid-template-columns: repeat(3, minmax(0, 64px));
   }
 }
@@ -483,8 +514,8 @@ body {
 }
 
 .input:focus {
-  border-color: rgba(255, 62, 207, 0.45);
-  box-shadow: 0 0 0 3px rgba(255, 62, 207, 0.12);
+  border-color: color-mix(in srgb, var(--accent-color) 45%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 12%, transparent);
 }
 
 .form-field {
@@ -528,9 +559,9 @@ body {
 }
 
 .contact-link:hover {
-  border-color: rgba(255, 62, 207, 0.28);
-  background: rgba(252, 231, 243, 0.65);
-  box-shadow: 0 0 24px rgba(94, 234, 212, 0.12);
+  border-color: color-mix(in srgb, var(--accent-color) 28%, transparent);
+  background: color-mix(in srgb, var(--accent-color) 8%, white);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent-color) 12%, transparent);
 }
 
 .icon-link {
@@ -544,9 +575,9 @@ body {
 }
 
 .nav-link:hover {
-  color: #9d174d;
-  background: rgba(252, 231, 243, 0.85);
-  box-shadow: 0 0 16px rgba(255, 62, 207, 0.12);
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color) 10%, var(--bg-main));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent-color) 12%, transparent);
 }
 
 .keyboard-pad-sweep {
@@ -611,6 +642,577 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/* Captures — tactile scrapbook pinboard */
+.captures-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #17141b;
+  color: #f8eee5;
+}
+
+.captures-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image:
+    repeating-radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.07) 0 0.6px, transparent 0.8px 4px),
+    linear-gradient(115deg, rgba(245, 230, 211, 0.035), transparent 45%),
+    linear-gradient(45deg, color-mix(in srgb, var(--accent-color) 2.5%, transparent), transparent 55%);
+  background-size: 7px 7px, 100% 100%, 100% 100%;
+}
+
+.captures-title {
+  margin-top: 1rem;
+  color: #fff8f1;
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(2.25rem, 7vw, 4.75rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+.captures-intro {
+  max-width: 38rem;
+  margin: 1.25rem auto 0;
+  color: rgba(238, 224, 215, 0.62);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  line-height: 1.7;
+}
+
+.captures-stage {
+  position: relative;
+  width: 100%;
+}
+
+.captures-stage-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(88vh, 46rem);
+  padding: 0.5rem 0 1.5rem;
+}
+
+.scrap-polaroid-hero {
+  position: relative;
+  z-index: 4;
+  width: min(94vw, 33rem);
+  height: min(84vh, 43rem);
+  padding: 1rem 1rem 4rem;
+  rotate: -3deg;
+}
+
+.scrap-polaroid-hero img {
+  object-position: center 28%;
+}
+
+.scrap-polaroid-hero figcaption {
+  bottom: 0.85rem;
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+}
+
+.captures-stage-tools {
+  display: flex;
+  justify-content: center;
+  padding: 0.75rem 0 1.75rem;
+}
+
+.tools-stage-frame {
+  position: relative;
+  width: min(100%, 36rem);
+  min-height: clamp(26rem, 56vw, 32rem);
+  margin-inline: auto;
+}
+
+.tools-connectors {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.tools-connectors line {
+  stroke: rgba(255, 244, 230, 0.22);
+  stroke-width: 1;
+  stroke-dasharray: 4 7;
+  stroke-linecap: round;
+}
+
+.scrap-polaroid-tools-anchor {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: clamp(15rem, 36vw, 22rem);
+  height: clamp(19rem, 46vw, 28rem);
+  padding: 0.8rem 0.8rem 3.2rem;
+  translate: -50% -50%;
+  rotate: -3deg;
+  transform-origin: center;
+}
+
+.scrap-polaroid-tools-anchor figcaption {
+  bottom: 0.6rem;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+}
+
+.scrapbook-board {
+  position: relative;
+  width: 100%;
+  height: clamp(36rem, 50vw, 40rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.8rem;
+  background:
+    repeating-radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 5px),
+    linear-gradient(135deg, rgba(69, 52, 72, 0.72), rgba(30, 25, 34, 0.92));
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.38), 0 26px 60px rgba(7, 6, 9, 0.38);
+}
+
+.scrapbook-board::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.28);
+}
+
+.scrap-polaroid {
+  position: absolute;
+  z-index: 4;
+  margin: 0;
+  padding: 0.55rem 0.55rem 2.15rem;
+  background: #fffaf2;
+  box-shadow: 0 16px 30px rgba(5, 4, 7, 0.42), 0 2px 4px rgba(5, 4, 7, 0.3);
+  transform-origin: center;
+  transition: z-index 0s, box-shadow 300ms ease;
+}
+
+.scrap-polaroid:hover {
+  z-index: 15;
+  box-shadow: 0 22px 42px rgba(5, 4, 7, 0.52);
+}
+
+.scrap-polaroid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #ded4c9;
+}
+
+.scrap-photo {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #ded4c9;
+}
+
+.scrap-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.scrap-photo-street {
+  aspect-ratio: 3 / 4;
+}
+
+.scrap-photo-sakleshpura,
+.scrap-photo-peacock {
+  aspect-ratio: 699 / 1024;
+}
+
+.scrap-photo-kerala {
+  aspect-ratio: 16 / 9;
+}
+
+.scrap-photo-kerala img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: auto;
+  height: 177.78%;
+  max-width: none;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center;
+}
+
+.scrap-polaroid figcaption {
+  position: absolute;
+  left: 0.55rem;
+  right: 0.55rem;
+  bottom: 0.34rem;
+  color: #39303d;
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+}
+
+.washi-tape {
+  position: absolute;
+  right: -1.1rem;
+  top: 0.7rem;
+  z-index: 3;
+  width: 6.2rem;
+  height: 1.65rem;
+  transform: rotate(38deg);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 8px, rgba(255, 255, 255, 0.2) 8px 10px),
+    color-mix(in srgb, var(--accent-color) 72%, transparent);
+  box-shadow: 0 2px 5px rgba(10, 8, 12, 0.2);
+  clip-path: polygon(3% 8%, 98% 0, 94% 92%, 0 100%);
+}
+
+.scrap-pin {
+  position: absolute;
+  left: 50%;
+  top: -0.35rem;
+  z-index: 3;
+  width: 0.8rem;
+  height: 0.8rem;
+  transform: translateX(-50%);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  background: var(--accent-color);
+  box-shadow: 0 3px 5px rgba(8, 6, 10, 0.45);
+}
+
+.scrap-polaroid-1 {
+  left: 8%;
+  top: 4%;
+  width: clamp(13rem, 21vw, 16.5rem);
+  height: auto;
+  rotate: -6deg;
+}
+
+.scrap-polaroid-2 {
+  left: 29%;
+  bottom: 3%;
+  width: clamp(12.5rem, 20vw, 15.5rem);
+  height: auto;
+  rotate: 5deg;
+}
+
+.scrap-polaroid-3 {
+  right: 8%;
+  top: 4%;
+  width: clamp(12.5rem, 20vw, 15.5rem);
+  height: auto;
+  rotate: 6deg;
+}
+
+.scrap-polaroid-4 {
+  right: 24%;
+  bottom: 5%;
+  width: clamp(17rem, 28vw, 22rem);
+  height: auto;
+  rotate: -5deg;
+}
+
+.scrapbook-note {
+  position: relative;
+  z-index: 3;
+  display: block;
+  width: clamp(11rem, 22vw, 14.5rem);
+  margin: 0.25rem auto 1.35rem;
+  padding: 0.85rem 0.9rem 1rem;
+  color: #4e4557;
+  font-family: "Caveat", cursive;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.22), transparent 40%),
+    #f5e6d3;
+  box-shadow: 0 10px 22px rgba(5, 4, 7, 0.28), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  clip-path: polygon(1% 4%, 97% 0, 100% 93%, 94% 100%, 0 96%, 3% 18%);
+  rotate: -2.5deg;
+}
+
+.scrapbook-note::before {
+  content: "";
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  top: 0.45rem;
+  height: 1px;
+  background: color-mix(in srgb, var(--accent-color) 18%, transparent);
+}
+
+.scrap-sticker {
+  position: absolute;
+  z-index: 12;
+  color: #fffaf4;
+  filter: drop-shadow(0 8px 9px rgba(4, 3, 5, 0.42));
+}
+
+.scrap-sticker-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  transform-origin: center;
+}
+
+.scrap-sticker span {
+  display: flex;
+  width: 4.6rem;
+  height: 4.6rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.58);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.12);
+}
+
+.scrap-sticker-capcut span,
+.scrap-sticker-canva span,
+.scrap-sticker-photoroom span {
+  width: 6.3rem;
+  height: 6.3rem;
+}
+
+.scrap-sticker span img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+.scrap-sticker small {
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(13, 11, 15, 0.72);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.scrap-sticker-capcut {
+  left: 0;
+  top: 2%;
+  rotate: -6deg;
+}
+
+.scrap-sticker-capcut span {
+  background: #3c3645;
+}
+
+.scrap-sticker-canva {
+  right: 0;
+  top: 4%;
+  rotate: 5deg;
+}
+
+.scrap-sticker-canva span {
+  background: var(--accent-color);
+}
+
+.scrap-sticker-photoroom {
+  left: 1%;
+  bottom: 3%;
+  rotate: -4deg;
+}
+
+.scrap-sticker-photoroom span {
+  background: #7463d8;
+}
+
+.scrap-sticker-camera {
+  right: 3%;
+  bottom: 4%;
+  rotate: 6deg;
+}
+
+.scrap-sticker-camera span {
+  background: var(--accent-color);
+}
+
+.scrapbook-tools-tag {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  transform: rotate(-0.5deg);
+  border: 1px dashed rgba(26, 21, 35, 0.18);
+  background: #f5e6d3;
+  color: #4e4557;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 4px 5px 0 color-mix(in srgb, var(--accent-color) 13%, transparent);
+}
+
+.follow-roll-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 48%, transparent);
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  background: color-mix(in srgb, var(--accent-color) 9%, transparent);
+  color: #fff0ea;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 28px color-mix(in srgb, var(--accent-color) 10%, transparent);
+  transition: transform 300ms ease, border-color 300ms ease, background 300ms ease, box-shadow 300ms ease;
+}
+
+.follow-roll-btn:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent-color) 82%, transparent);
+  background: color-mix(in srgb, var(--accent-color) 16%, transparent);
+  box-shadow: 0 0 36px color-mix(in srgb, var(--accent-color) 18%, transparent);
+}
+
+@media (max-width: 767px) {
+  .captures-stage-hero {
+    min-height: auto;
+    padding: 0.25rem 0 1.25rem;
+  }
+
+  .scrap-polaroid-hero {
+    width: min(90vw, 24rem);
+    height: min(76vh, 34rem);
+    rotate: -2deg;
+  }
+
+  .tools-stage-frame {
+    width: 100%;
+    min-height: 30rem;
+    padding: 3rem 0.25rem 3.5rem;
+  }
+
+  .scrap-polaroid-tools-anchor {
+    width: min(58vw, 15rem);
+    height: min(74vw, 19rem);
+  }
+
+  .scrap-sticker span {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .scrap-sticker-capcut span,
+  .scrap-sticker-canva span,
+  .scrap-sticker-photoroom span {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  .scrap-sticker small {
+    font-size: 0.6rem;
+  }
+
+  .scrap-sticker-capcut {
+    left: 0;
+    top: 1%;
+    rotate: -4deg;
+  }
+
+  .scrap-sticker-canva {
+    right: 0;
+    top: 5%;
+    rotate: 4deg;
+  }
+
+  .scrap-sticker-photoroom {
+    left: 1%;
+    bottom: 3%;
+    rotate: -3deg;
+  }
+
+  .scrap-sticker-camera {
+    right: 0;
+    bottom: 0;
+    rotate: 4deg;
+  }
+
+  .scrapbook-board {
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: start;
+    gap: 0.7rem 0.45rem;
+    overflow: visible;
+    padding: 1.6rem 0.75rem 1.4rem;
+  }
+
+  .scrapbook-board .scrap-polaroid {
+    position: relative;
+    inset: auto;
+    grid-column: span 6;
+    width: 100%;
+    height: auto;
+    translate: 0 0;
+    rotate: -2deg;
+  }
+
+  .scrapbook-board .scrap-polaroid:nth-of-type(even) {
+    rotate: 2deg;
+  }
+
+  .scrapbook-board .scrap-polaroid-3 {
+    grid-column: span 5;
+    margin-top: -0.2rem;
+  }
+
+  .scrapbook-board .scrap-polaroid-4 {
+    grid-column: span 7;
+    margin-left: -0.35rem;
+  }
+
+  .scrapbook-note {
+    width: min(72vw, 13rem);
+    margin-bottom: 1.1rem;
+  }
+
+  .scrapbook-tools-tag {
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .scrapbook-board {
+    height: clamp(34rem, 58vw, 37rem);
+  }
+
+  .scrap-polaroid-1 {
+    left: 2%;
+    top: 4%;
+  }
+
+  .scrap-polaroid-2 {
+    left: 27%;
+    bottom: 2%;
+  }
+
+  .scrap-polaroid-3 {
+    right: 2%;
+    top: 4%;
+  }
+
+  .scrap-polaroid-4 {
+    right: 20%;
+    bottom: 4%;
   }
 }
 

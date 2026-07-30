@@ -3,53 +3,45 @@ import { useEffect, useRef, useState } from "react";
 
 const groups = [
   {
-    name: "Languages",
+    name: "Data & Analytics",
     layout: "grid-2",
-    padClass: "pad-languages",
+    padClass: "pad-data",
+    featured: true,
     keys: [
-      {
-        name: "Python",
-        src: "https://cdn.simpleicons.org/python/FFD43B",
-        tone: "#3776AB",
-      },
-      { name: "JavaScript", src: "https://cdn.simpleicons.org/javascript/111111", tone: "#F7DF1E" },
-      { name: "C", src: "https://cdn.simpleicons.org/c/ffffff", tone: "#A8B9CC" },
       { name: "SQL", src: "https://cdn.simpleicons.org/postgresql/ffffff", tone: "#336791" },
+      { name: "Power BI", text: "BI", tone: "#F2C811" },
+      { name: "Excel", text: "XLS", tone: "#217346" },
+      { name: "Python", src: "https://cdn.simpleicons.org/python/FFD43B", tone: "#3776AB" },
     ],
   },
   {
-    name: "Frontend",
-    layout: "grid-2",
-    padClass: "pad-frontend",
+    name: "Creative Tools",
+    layout: "row-3",
+    padClass: "pad-creative",
     keys: [
+      { name: "CapCut", src: "/image/capcut.png", tone: "#f8f8f8" },
+      { name: "Canva", src: "/image/canva.png", tone: "#7d5ce7" },
+      { name: "Photoroom", src: "/image/photoroom.png", tone: "#6355d8" },
+    ],
+  },
+  {
+    name: "Built With",
+    subtitle: "Shipped using AI-assisted development (Cursor + Claude)",
+    layout: "grid-built",
+    padClass: "pad-built",
+    keys: [
+      { name: "Python", src: "https://cdn.simpleicons.org/python/FFD43B", tone: "#3776AB" },
+      { name: "JavaScript", src: "https://cdn.simpleicons.org/javascript/111111", tone: "#F7DF1E" },
+      { name: "C", src: "https://cdn.simpleicons.org/c/ffffff", tone: "#A8B9CC" },
       { name: "React", src: "https://cdn.simpleicons.org/react/20232A", tone: "#61DAFB" },
       { name: "HTML5", src: "https://cdn.simpleicons.org/html5/ffffff", tone: "#E34F26" },
       { name: "CSS3", src: "https://cdn.simpleicons.org/css/ffffff", tone: "#1572B6" },
       { name: "Tailwind", src: "https://cdn.simpleicons.org/tailwindcss/ffffff", tone: "#06B6D4" },
-    ],
-  },
-  {
-    name: "Backend",
-    layout: "row-3",
-    padClass: "pad-backend",
-    keys: [
       { name: "Node.js", src: "https://cdn.simpleicons.org/nodedotjs/ffffff", tone: "#339933" },
       { name: "Express", src: "https://cdn.simpleicons.org/express/000000", tone: "#ffffff" },
       { name: "PostgreSQL", src: "https://cdn.simpleicons.org/postgresql/ffffff", tone: "#336791" },
-    ],
-  },
-  {
-    name: "AI",
-    layout: "row-3",
-    padClass: "pad-ai",
-    keys: [
       { name: "TensorFlow", src: "https://cdn.simpleicons.org/tensorflow/ffffff", tone: "#FF6F00" },
       { name: "OpenCV", text: "CV", tone: "#5C3EE8" },
-      {
-        name: "Python",
-        src: "https://cdn.simpleicons.org/python/3776AB",
-        tone: "#FFD43B",
-      },
     ],
   },
   {
@@ -99,6 +91,7 @@ function SkillPad({ group, padIndex, inView }) {
   return (
     <article className="space-y-3">
       <p className="skill-category-label text-center">{group.name}</p>
+      {group.subtitle ? <p className="skill-category-subtitle">{group.subtitle}</p> : null}
       <div className="keyboard-pad-wrap">
         <div className={`keyboard-pad ${group.layout} ${group.padClass}`}>
           {group.keys.map((keyData, keyIndex) => (
@@ -140,7 +133,7 @@ function Skills() {
 
   return (
     <section id="skills" className="relative" ref={ref}>
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-80 w-80 -translate-x-1/2 rounded-full bg-neon-cyan/10 blur-[100px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-80 w-80 -translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
       <div className="section-wrap">
         <motion.div
           initial={{ opacity: 0, y: -24 }}
@@ -158,7 +151,10 @@ function Skills() {
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
           {groups.map((group, index) => {
-            const placement = group.name === "Tools" ? "md:col-span-2 md:max-w-[500px] md:justify-self-center w-full" : "";
+            const placement =
+              group.name === "Built With"
+                ? "w-full md:col-span-2 md:max-w-[900px] md:justify-self-center"
+                : "w-full md:col-span-2 md:max-w-[500px] md:justify-self-center";
             return (
               <div key={group.name} className={placement}>
                 <SkillPad group={group} padIndex={index} inView={inView} />

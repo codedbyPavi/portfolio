@@ -6,7 +6,7 @@ import { highlights, profile } from "../data/portfolioData";
 function About() {
   return (
     <section id="about" className="relative overflow-hidden">
-      <div className="pointer-events-none absolute left-1/2 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-neon-magenta/8 blur-[100px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
       <div className="section-wrap">
         <SectionTitle
           title="About"
@@ -21,13 +21,13 @@ function About() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto w-full max-w-sm lg:mx-0 lg:justify-self-center"
           >
-            <div className="rounded-[2rem] bg-gradient-to-br from-neon-pink/35 via-white/80 to-neon-cyan/30 p-[1px] shadow-[0_20px_60px_-15px_rgba(26,21,35,0.12)]">
+            <div className="rounded-[2rem] bg-gradient-to-br from-accent/35 via-white/80 to-accent/15 p-[1px] shadow-[0_20px_60px_-15px_rgba(26,21,35,0.12)]">
               <motion.div
                 className="overflow-hidden rounded-[1.95rem] border border-white/60 bg-white/40 backdrop-blur-xl"
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
               >
-                <div className="flex aspect-[4/5] flex-col items-center justify-center bg-gradient-to-br from-blush/90 via-white to-sand/90 px-8 py-10 text-center">
+                <div className="flex aspect-[4/5] flex-col items-center justify-center bg-gradient-to-br from-accent/10 via-white to-sand/90 px-8 py-10 text-center">
                   <p className="font-accent text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">At a glance</p>
                   <p className="font-display mt-4 text-5xl font-extrabold tracking-tight text-ink md:text-6xl">
                     {profile.name
@@ -38,7 +38,7 @@ function About() {
                   </p>
                   <p className="font-script mt-6 text-2xl leading-snug text-inkMuted md:text-3xl">{profile.name}</p>
                   <div className="font-accent mt-8 flex items-center gap-2 rounded-full border border-black/5 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-inkMuted shadow-sticker">
-                    <Sparkles className="h-4 w-4 text-neon-pink" />
+                    <Sparkles className="h-4 w-4 text-accent" />
                     {profile.title}
                   </div>
                 </div>
@@ -66,9 +66,9 @@ function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * idx, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                  className="group flex items-start gap-4 rounded-2xl border border-black/5 bg-white/70 p-4 shadow-sticker backdrop-blur-md transition hover:border-neon-pink/25 hover:shadow-[0_12px_40px_-10px_rgba(255,62,207,0.12)]"
+                  className="group flex items-start gap-4 rounded-2xl border border-black/5 bg-white/70 p-4 shadow-sticker backdrop-blur-md transition hover:border-accent/25 hover:shadow-glowSoft"
                 >
-                  <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-neon-pink/20 to-neon-cyan/20 text-neon-pink transition group-hover:scale-110">
+                  <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent transition group-hover:scale-110">
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
                   <div className="min-w-0 text-left">
